@@ -1,0 +1,35 @@
+# Importing the required spellchecker library
+from spellchecker import SpellChecker
+
+# Initialize the spellchecker
+spell = SpellChecker()
+
+# Function to autocorrect text input
+def autocorrect_text(input_text):
+    # Split the input into words
+    words = input_text.split()
+    corrected_text = []
+
+    # Iterate over each word in the input
+    for word in words:
+        # Check if the word is correctly spelled
+        if word in spell:
+            corrected_text.append(word)
+        else:
+            # If misspelled, correct the word
+            corrected_text.append(spell.correction(word))
+    
+    # Return the corrected sentence
+    return ' '.join(corrected_text)
+
+# Example: Real-time input simulation
+if __name__ == "__main__":
+    # Sample input text with misspelled words
+    input_text = "Ths is a smple txt that contans mispeld words."
+
+    # Autocorrect the input text
+    corrected_output = autocorrect_text(input_text)
+
+    # Display the original and corrected texts
+    print(f"Original Text: {input_text}")
+    print(f"Corrected Text: {corrected_output}")
